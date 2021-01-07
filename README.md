@@ -1,6 +1,6 @@
 # Mildred's BIS 15L Repository
 
-Welcome! This repository includes all of my.rmd files and data.
+Welcome! This repository includes all of my .rmd files and data.
 
 ## Contact Info
 

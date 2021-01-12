@@ -464,6 +464,23 @@ titles</code></pre>
 <ol start="6" style="list-style-type: decimal">
 <li>Calculate the mean temperature of all eight springs.</li>
 </ol>
+<pre class="r"><code>hot_springs_matrix</code></pre>
+<pre><code>##                   Jill Steve Susan
+## Bluebell Spring  36.25 35.40 35.30
+## Opal Spring      35.15 35.35 33.35
+## Riverside Spring 30.70 29.65 29.20
+## Too Hot Spring   39.70 40.05 38.65
+## Mystery Spring   31.85 31.40 29.30
+## Emerald Spring   30.20 30.65 29.75
+## Black Spring     32.90 32.50 32.80
+## Pearl Spring     36.80 36.45 33.15</code></pre>
+<pre class="r"><code>?rowMeans</code></pre>
+<pre><code>## starting httpd help server ... done</code></pre>
+<pre class="r"><code>rowMeans(hot_springs_matrix) #how to calculate mean for one single row.</code></pre>
+<pre><code>##  Bluebell Spring      Opal Spring Riverside Spring   Too Hot Spring 
+##         35.65000         34.61667         29.85000         39.46667 
+##   Mystery Spring   Emerald Spring     Black Spring     Pearl Spring 
+##         30.85000         30.20000         32.73333         35.46667</code></pre>
 <pre class="r"><code>hot_springs_mean_1 &lt;- c(hot_springs_matrix[1, ])
 hot_springs_mean_1</code></pre>
 <pre><code>##  Jill Steve Susan 

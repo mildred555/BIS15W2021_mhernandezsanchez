@@ -49,17 +49,26 @@ titles
 ```{r}
 scientists <- c("Jill", "Steve", "Susan")
 ```
+
 ```{r}
 rownames(hot_springs_matrix) <- titles
 ```
+
 ```{r}
 colnames(hot_springs_matrix) <- scientists
 ```
+
 ```{r}
 hot_springs_matrix
 ```
 
 6. Calculate the mean temperature of all eight springs.
+```{r}
+hot_springs_matrix
+?rowMeans
+rowMeans(hot_springs_matrix) #how to calculate mean for one single row.
+```
+
 ```{r}
 hot_springs_mean_1 <- c(hot_springs_matrix[1, ])
 hot_springs_mean_1
@@ -71,50 +80,65 @@ mean_1
 ```{r}
 hot_springs_mean_2 <- c(hot_springs_matrix[2, ])
 ```
+
 ```{r}
 mean_2 <- mean(hot_springs_mean_2)
 ```
+
 ```{r}
 hot_springs_mean_3 <- c(hot_springs_matrix[3, ])
 ```
+
 ```{r}
 mean_3 <- mean(hot_springs_mean_3)
 ```
+
 ```{r}
 hot_springs_mean_4 <- c(hot_springs_matrix[4, ])
 ```
+
 ```{r}
 mean_4 <- mean(hot_springs_mean_4)
 ```
+
 ```{r}
 hot_springs_mean_5 <- c(hot_springs_matrix[5, ])
 ```
+
 ```{r}
 mean_5 <- mean(hot_springs_mean_5)
 ```
+
 ```{r}
 hot_springs_mean_6 <- c(hot_springs_matrix[6, ])
 ```
+
 ```{r}
 mean_6 <- mean(hot_springs_mean_6)
 ```
+
 ```{r}
 hot_springs_mean_7 <- c(hot_springs_matrix[7, ])
 ```
+
 ```{r}
 mean_7 <- mean(hot_springs_mean_7)
 ```
+
 ```{r}
 hot_springs_mean_8 <- c(hot_springs_matrix[8, ])
 hot_springs_mean_8
 ```
+
 ```{r}
 mean_8 <- mean(hot_springs_mean_8)
 mean_8
 ```
+
 ```{r}
 all_hot_springs_mean <- c(mean_1, mean_2, mean_3, mean_4, mean_5, mean_6, mean_7, mean_8)
 ```
+
 ```{r}
 mean(all_hot_springs_mean)
 ```
@@ -124,7 +148,6 @@ mean(all_hot_springs_mean)
 total <- c(all_hot_springs_mean)
 total
 ```
-
 ```{r}
 all_hot_springs_matrix <- cbind(hot_springs_matrix, total)
 all_hot_springs_matrix

@@ -77,13 +77,16 @@ titles
 scientists <- c("Jill", "Steve", "Susan")
 ```
 
+
 ```r
 rownames(hot_springs_matrix) <- titles
 ```
 
+
 ```r
 colnames(hot_springs_matrix) <- scientists
 ```
+
 
 ```r
 hot_springs_matrix
@@ -102,6 +105,42 @@ hot_springs_matrix
 ```
 
 6. Calculate the mean temperature of all eight springs.
+
+```r
+hot_springs_matrix
+```
+
+```
+##                   Jill Steve Susan
+## Bluebell Spring  36.25 35.40 35.30
+## Opal Spring      35.15 35.35 33.35
+## Riverside Spring 30.70 29.65 29.20
+## Too Hot Spring   39.70 40.05 38.65
+## Mystery Spring   31.85 31.40 29.30
+## Emerald Spring   30.20 30.65 29.75
+## Black Spring     32.90 32.50 32.80
+## Pearl Spring     36.80 36.45 33.15
+```
+
+```r
+?rowMeans
+```
+
+```
+## starting httpd help server ... done
+```
+
+```r
+rowMeans(hot_springs_matrix) #how to calculate mean for one single row.
+```
+
+```
+##  Bluebell Spring      Opal Spring Riverside Spring   Too Hot Spring 
+##         35.65000         34.61667         29.85000         39.46667 
+##   Mystery Spring   Emerald Spring     Black Spring     Pearl Spring 
+##         30.85000         30.20000         32.73333         35.46667
+```
+
 
 ```r
 hot_springs_mean_1 <- c(hot_springs_matrix[1, ])
@@ -126,49 +165,61 @@ mean_1
 hot_springs_mean_2 <- c(hot_springs_matrix[2, ])
 ```
 
+
 ```r
 mean_2 <- mean(hot_springs_mean_2)
 ```
+
 
 ```r
 hot_springs_mean_3 <- c(hot_springs_matrix[3, ])
 ```
 
+
 ```r
 mean_3 <- mean(hot_springs_mean_3)
 ```
+
 
 ```r
 hot_springs_mean_4 <- c(hot_springs_matrix[4, ])
 ```
 
+
 ```r
 mean_4 <- mean(hot_springs_mean_4)
 ```
+
 
 ```r
 hot_springs_mean_5 <- c(hot_springs_matrix[5, ])
 ```
 
+
 ```r
 mean_5 <- mean(hot_springs_mean_5)
 ```
+
 
 ```r
 hot_springs_mean_6 <- c(hot_springs_matrix[6, ])
 ```
 
+
 ```r
 mean_6 <- mean(hot_springs_mean_6)
 ```
+
 
 ```r
 hot_springs_mean_7 <- c(hot_springs_matrix[7, ])
 ```
 
+
 ```r
 mean_7 <- mean(hot_springs_mean_7)
 ```
+
 
 ```r
 hot_springs_mean_8 <- c(hot_springs_matrix[8, ])
@@ -180,6 +231,7 @@ hot_springs_mean_8
 ## 36.80 36.45 33.15
 ```
 
+
 ```r
 mean_8 <- mean(hot_springs_mean_8)
 mean_8
@@ -189,9 +241,11 @@ mean_8
 ## [1] 35.46667
 ```
 
+
 ```r
 all_hot_springs_mean <- c(mean_1, mean_2, mean_3, mean_4, mean_5, mean_6, mean_7, mean_8)
 ```
+
 
 ```r
 mean(all_hot_springs_mean)
@@ -211,7 +265,6 @@ total
 ```
 ## [1] 35.65000 34.61667 29.85000 39.46667 30.85000 30.20000 32.73333 35.46667
 ```
-
 
 ```r
 all_hot_springs_matrix <- cbind(hot_springs_matrix, total)

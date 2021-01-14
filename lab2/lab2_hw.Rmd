@@ -66,7 +66,7 @@ hot_springs_matrix
 ```{r}
 hot_springs_matrix
 ?rowMeans
-rowMeans(hot_springs_matrix) #how to calculate mean for one single row.
+rowMeans(hot_springs_matrix) #how to calculate mean for each row in matrix.
 ```
 
 ```{r}

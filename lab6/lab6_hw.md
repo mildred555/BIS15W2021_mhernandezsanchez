@@ -1,7 +1,7 @@
 ---
 title: "Lab 6 Homework"
 author: "Mildred Hernandez"
-date: "2021-01-25"
+date: "2021-01-26"
 output:
   html_document: 
     theme: spacelab
@@ -449,10 +449,6 @@ fisheries_tidy %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 193 x 2
 ##    country                  catch_total
 ##    <fct>                          <dbl>
@@ -479,10 +475,6 @@ fisheries_tidy %>%
   group_by(country) %>%
   summarize(catch_total = sum(catch, na.rm = T)) %>%
   arrange(desc(catch_total))
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ```
@@ -515,10 +507,6 @@ fisheries_tidy %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 122 x 2
 ##    country                  catch_total
 ##    <fct>                          <dbl>
@@ -544,10 +532,6 @@ fisheries_tidy%>%
   group_by(asfis_species_name) %>%
   summarize(highest_catch_total = sum(catch, na.rm = T)) %>%
   arrange(desc(highest_catch_total))
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ```
@@ -578,13 +562,9 @@ fisheries_tidy %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 1 x 2
 ##   country     catch_total
-##   <fct>             <dbl>
+## * <fct>             <dbl>
 ## 1 El Salvador         107
 ```
 

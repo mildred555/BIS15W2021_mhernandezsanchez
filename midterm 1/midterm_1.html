@@ -553,25 +553,16 @@ class(vertebrate_community$LandUse)</code></pre>
 <pre><code>## [1] &quot;factor&quot;</code></pre>
 <p><strong>10. (4 points) For the transects with high and moderate hunting intensity, how does the average diversity of birds and mammals compare?</strong></p>
 <pre class="r"><code>vertebrate_community %&gt;%
-  filter(HuntCat == &quot;Moderate&quot;) %&gt;%
+  filter(HuntCat != &quot;None&quot;) %&gt;%
   group_by(HuntCat) %&gt;%
   summarize(mean_bird_diversity = mean(Diversity_BirdSpecies),
             mean_mammals_diversity = mean(Diversity_MammalSpecies))</code></pre>
 <pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<pre><code>## # A tibble: 1 x 3
+<pre><code>## # A tibble: 2 x 3
 ##   HuntCat  mean_bird_diversity mean_mammals_diversity
 ##   &lt;fct&gt;                  &lt;dbl&gt;                  &lt;dbl&gt;
-## 1 Moderate                1.62                   1.68</code></pre>
-<pre class="r"><code>vertebrate_community %&gt;%
-  filter(HuntCat == &quot;High&quot;) %&gt;%
-  group_by(HuntCat) %&gt;%
-  summarize(mean_bird_diversity = mean(Diversity_BirdSpecies),
-            mean_mammals_diversity = mean(Diversity_MammalSpecies))</code></pre>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<pre><code>## # A tibble: 1 x 3
-##   HuntCat mean_bird_diversity mean_mammals_diversity
-##   &lt;fct&gt;                 &lt;dbl&gt;                  &lt;dbl&gt;
-## 1 High                   1.66                   1.74</code></pre>
+## 1 High                    1.66                   1.74
+## 2 Moderate                1.62                   1.68</code></pre>
 <p><strong>11. (4 points) One of the conclusions in the study is that the relative abundance of animals drops off the closer you get to a village. Let’s try to reconstruct this (without the statistics). How does the relative abundance (RA) of apes, birds, elephants, monkeys, rodents, and ungulates compare between sites that are less than 5km from a village to sites that are greater than 20km from a village? The variable <code>Distance</code> measures the distance of the transect from the nearest village. Hint: try using the <code>across</code> operator.</strong></p>
 <pre class="r"><code>names(vertebrate_community)</code></pre>
 <pre><code>##  [1] &quot;TransectID&quot;              &quot;Distance&quot;               

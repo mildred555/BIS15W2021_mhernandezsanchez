@@ -111,14 +111,7 @@ class(vertebrate_community$LandUse)
 **10. (4 points) For the transects with high and moderate hunting intensity, how does the average diversity of birds and mammals compare?**
 ```{r}
 vertebrate_community %>%
-  filter(HuntCat == "Moderate") %>%
-  group_by(HuntCat) %>%
-  summarize(mean_bird_diversity = mean(Diversity_BirdSpecies),
-            mean_mammals_diversity = mean(Diversity_MammalSpecies))
-```
-```{r}
-vertebrate_community %>%
-  filter(HuntCat == "High") %>%
+  filter(HuntCat != "None") %>%
   group_by(HuntCat) %>%
   summarize(mean_bird_diversity = mean(Diversity_BirdSpecies),
             mean_mammals_diversity = mean(Diversity_MammalSpecies))

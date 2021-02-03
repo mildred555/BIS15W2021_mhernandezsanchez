@@ -1,7 +1,7 @@
 ---
 title: "Midterm 1"
 author: "Mildred Hernandez"
-date: "2021-01-27"
+date: "2021-02-02"
 output:
   html_document: 
     theme: spacelab
@@ -119,13 +119,9 @@ elephants %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 2 x 3
 ##   sex   mean_age mean_height
-##   <fct>    <dbl>       <dbl>
+## * <fct>    <dbl>       <dbl>
 ## 1 F        12.8         190.
 ## 2 M         8.95        185.
 ```
@@ -143,13 +139,9 @@ elephants %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 2 x 5
 ##   sex   height_min height_max mean_height     n
-##   <fct>      <dbl>      <dbl>       <dbl> <int>
+## * <fct>      <dbl>      <dbl>       <dbl> <int>
 ## 1 F           206.       278.        233.    25
 ## 2 M           237.       304.        273.     8
 ```
@@ -269,13 +261,9 @@ vertebrate_community %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 2 x 3
 ##   HuntCat  mean_bird_diversity mean_mammals_diversity
-##   <fct>                  <dbl>                  <dbl>
+## * <fct>                  <dbl>                  <dbl>
 ## 1 High                    1.66                   1.74
 ## 2 Moderate                1.62                   1.68
 ```

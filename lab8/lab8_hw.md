@@ -1,7 +1,7 @@
 ---
 title: "Lab 8 Homework"
 author: "Mildred Hernandez"
-date: "2021-02-04"
+date: "2021-02-09"
 output:
   html_document: 
     theme: spacelab
@@ -62,7 +62,7 @@ library(here)
 ```
 
 ```
-## here() starts at C:/Users/mildr/OneDrive/Desktop/BIS15W2021_mhernandezsanchez
+## here() starts at D:/TA files/Winter2021 BIS15L/students_rep/BIS15W2021_mhernandezsanchez
 ```
 
 The quotes show the folder structure from the root directory.
@@ -107,8 +107,15 @@ sydneybeaches
 ## # ... with 3,680 more rows
 ```
 
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
 2. Are these data "tidy" per the definitions of the tidyverse? How do you know? Are they in wide or long format?
 **No, because the date column has values that should be columns. They are in long format.**
+#wide data are easier to enter which is why they're usually not tidy.
+</div>
 
 3. We are only interested in the variables site, date, and enterococci_cfu_100ml. Make a new object focused on these variables only. Name the object `sydneybeaches_long`
 

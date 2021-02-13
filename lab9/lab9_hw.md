@@ -1,7 +1,7 @@
 ---
 title: "Lab 9 Homework"
 author: "Mildred Hernandez"
-date: "2021-02-08"
+date: "2021-02-12"
 output:
   html_document: 
     theme: spacelab
@@ -196,10 +196,6 @@ colleges %>%
   coord_flip()
 ```
 
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
 ![](lab9_hw_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
 
 4. The column `COSTT4_A` is the annual cost of each institution. Which city has the highest average cost? Where is it located?
@@ -213,7 +209,7 @@ colleges %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'city' (override with `.groups` argument)
+## `summarise()` has grouped output by 'city'. You can override using the `.groups` argument.
 ```
 
 ```

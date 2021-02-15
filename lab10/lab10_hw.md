@@ -1,7 +1,7 @@
 ---
 title: "Lab 10 Homework"
 author: "Mildred Hernandez"
-date: "2021-02-11"
+date: "2021-02-14"
 output:
   html_document: 
     theme: spacelab
@@ -197,7 +197,7 @@ deserts %>%
 ```
 ## # A tibble: 4 x 2
 ##   taxa        n
-##   <chr>   <int>
+## * <chr>   <int>
 ## 1 Bird      450
 ## 2 Rabbit     75
 ## 3 Reptile    14
@@ -270,10 +270,6 @@ deserts %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 22 x 3
 ##    species     min_weight max_weight
 ##    <chr>            <dbl>      <dbl>
@@ -339,13 +335,9 @@ deserts %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 26 x 2
 ##     year n_observations
-##    <dbl>          <int>
+##  * <dbl>          <int>
 ##  1  1977            264
 ##  2  1978            389
 ##  3  1979            209
@@ -367,10 +359,6 @@ deserts %>%
   ggplot(aes(x=year, y=n_observations))+
   geom_col()+
   labs(title = "Number of Observations for merriami (1977-2002)")
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ![](lab10_hw_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
@@ -401,10 +389,6 @@ deserts %>%
   group_by(species) %>%
   summarize(mean_weight = mean(weight)) %>%
   arrange(desc(mean_weight))
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ```
@@ -473,13 +457,9 @@ deserts %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 2 x 2
 ##   sex   mean_hindfoot_length
-##   <chr>                <dbl>
+## * <chr>                <dbl>
 ## 1 F                     28.8
 ## 2 M                     29.7
 ```
@@ -496,10 +476,6 @@ deserts %>%
   theme(plot.title = element_text(size = 12, face = "bold"),
         axis.text = element_text(size = 10),
         axis.title = element_text(size = 10))
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ![](lab10_hw_files/figure-html/unnamed-chunk-25-1.png)<!-- -->

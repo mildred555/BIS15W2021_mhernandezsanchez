@@ -1,7 +1,7 @@
 ---
 title: "Lab 11 Homework"
 author: "Mildred Hernandez"
-date: "2021-02-16"
+date: "2021-02-17"
 output:
   html_document: 
     theme: spacelab
@@ -155,13 +155,9 @@ gapminder %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 12 x 2
 ##     year mean_life_exp
-##    <int>         <dbl>
+##  * <int>         <dbl>
 ##  1  1952          49.1
 ##  2  1957          51.5
 ##  3  1962          53.6
@@ -189,10 +185,6 @@ gapminder %>%
   theme(plot.title = element_text(size = 13, hjust = 0.5, face = "bold"),
         axis.text = element_text(size = 11),
         axis.title = element_text(size = 11))
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ![](lab11_hw_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
@@ -342,7 +334,7 @@ gapminder %>%
 ```
 
 ```
-## Warning: Removed 64 rows containing missing values (geom_point).
+## Warning: Removed 65 rows containing missing values (geom_point).
 ```
 
 ```
@@ -362,10 +354,6 @@ gapminder %>%
             min_pop = min(pop)) %>%
   mutate(pop_growth = max_pop - min_pop) %>%
   arrange(desc(pop_growth))
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ```
@@ -424,10 +412,6 @@ gapminder %>%
         axis.title = element_text(size = 14))
 ```
 
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
 ![](lab11_hw_files/figure-html/unnamed-chunk-24-1.png)<!-- -->
 **9. How does per-capita GDP growth compare between these same five countries?**
 **On average, per capita GDP growth follows the trend: US > Brazil > Indonesia > China > Inidia.**
@@ -438,10 +422,6 @@ gapminder %>%
   group_by(country) %>%
   summarize(mean_gdp = mean(gdp_percap)) %>%
   arrange(desc(mean_gdp))
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ```
@@ -492,7 +472,7 @@ gapminder %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'country' (override with `.groups` argument)
+## `summarise()` has grouped output by 'country'. You can override using the `.groups` argument.
 ```
 
 ```
@@ -532,7 +512,7 @@ gapminder %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'country' (override with `.groups` argument)
+## `summarise()` has grouped output by 'country'. You can override using the `.groups` argument.
 ```
 
 ![](lab11_hw_files/figure-html/unnamed-chunk-29-1.png)<!-- -->

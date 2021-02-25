@@ -118,7 +118,8 @@ wolves %>%
   ggplot() + 
   geom_sf(data = not_alaska_hawaii, size = 0.125) + 
   theme_linedraw()+
-  labs(title = "Lower 48 US States") +
+  labs(title = "Lower 48 US States",
+       x="Longitude", y="Latitude") +
   geom_point(data=wolves_48, aes(long, lat))
 ```
 
@@ -130,7 +131,15 @@ wolves %>%
 ```
 
 10. Make a new map that shows the distribution of wolves in the lower 48 US states but which has the size of location markers adjusted by pack size.
-
+```{r}
+wolves %>% 
+  ggplot() + 
+  geom_sf(data = not_alaska_hawaii, size=0.125) + 
+  theme_linedraw()+
+  labs(title = "Wolf Packs in the Lower 48 US States", 
+       x="Longitude", y="Latitude") +
+  geom_point(data=wolves_48, aes(long, lat, size=pack.size))
+```
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences. 

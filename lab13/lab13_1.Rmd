@@ -46,23 +46,23 @@ runApp("plot_iris.R")
 ## Shiny App Skeleton
 A shiny app consists of a user interface (ui) function, server function, and run function.  
 
-1. The `ui` function controls the user inputs and the way the app will be displayed.  
+1. The `ui` (user interface) function controls the user inputs and the way the app will be displayed.  
 2. The `server` function is the part of the app which takes the values of the user inputs, performs calculations and/or makes plots, and prepares the outputs for display.  
 3. The `run` function combines the ui and server function to run the app.  
 
 Below is a bare bones shiny app. You can get this code snippet by typing `shinyapp`. It doesn't do anything because we haven't created any inputs with the ui or any outputs with the server. Copy and paste the code or get it by typing `shinyapp`, and hit shift+tab.  
 ```{r, eval=F, echo=T}
-ui <- fluidPage()
+ui <- fluidPage() #controls how the app is displayed
 
-server <- function(input, output) {}
+server <- function(input, output) {} #where the actual coding happens
 
-shinyApp(ui, server)
+shinyApp(ui, server) #the run
 ```
 
 For the rest of the lab we will work on building an example app using `palmerpenguins`.  
 
 ## Shiny Inputs
-There are many types of inputs in shiny, see the [shiny cheat sheet](https://shiny.rstudio.com/images/shiny-cheatsheet.pdf). Our example app uses `selectInput()`, which takes a set of predefined choices and supplies them to the user. We are working with the iris data set, so we want the selections to be the column names of the data frame. Let's get the names of the iris data frame and add them as a `selectInput()` to our ui. `selectInput()` takes several arguments including the label that the server function will use, the label that will display to the user, the selection choices, and the initially selected choice. 
+There are many types of inputs in shiny, see the [shiny cheat sheet](https://shiny.rstudio.com/images/shiny-cheatsheet.pdf). Our example app uses `selectInput()`, which takes a set of predefined choices and supplies them to the user. We are working with the 'palmers penguins' data set, so we want the selections to be the column names of the data frame. Let's get the names of the iris data frame and add them as a `selectInput()` to our ui. `selectInput()` takes several arguments including the label that the server function will use, the label that will display to the user, the selection choices, and the initially selected choice. 
 ```{r}
 names(penguins)
 ```
@@ -71,11 +71,12 @@ We won't use the name `species` because that will be the `ggplot` grouping varia
 ```{r, eval=F, echo=T}
 ui <- fluidPage(
     selectInput("x", "Select X Variable", choices = c("bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g"), 
-              selected = "bill_length_mm")
-)
-
+              selected = "bill_length_mm"),
+    selectInput("y", "Select y Variable", choices = c("bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g"), 
+              selected = "bill_length_mm"))#the drop down menu choices
 server <- function(input, output) {
-  
+  reactive({input$x
+            input$y})
 }
 
 shinyApp(ui, server)
@@ -87,11 +88,12 @@ ui <- fluidPage(
     selectInput("x", "Select X Variable", choices = c("bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g"), 
               selected = "bill_length_mm"),
     selectInput("y", "Select Y Variable", choices = c("bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g"), 
-              selected = "bill_length_mm")
-)
+              selected = "bill_length_mm"), plotOutput("plot", width="500px", height="400px"))
 
 server <- function(input, output) {
-  
+  output$plot <-renderPlot({ggplot(penguins, aes_string(x=input$x, y=input$y, color="species"))+
+      geom_point()+
+      theme_light(base_size=18)})
 }
 
 shinyApp(ui, server)
@@ -145,8 +147,30 @@ Congratulations, you made your first shiny app!
 ```{r, echo=FALSE}
 homerange <- readr::read_csv("data/Tamburelloetal_HomeRangeDatabase.csv")
 ```
+```{r}
+homerange %>%
+  ggplot(aes(x=locomotion, fill=trophic.guild))+
+  geom_bar(position = "dodge")
+```
+```{r}
+homerange %>%
+  ggplot(aes(x=locomotion, fill=thermoregulation))+
+  geom_bar(position = "dodge")
+```
+
 
 2. Build a shiny app that produces a barplot that explores `locomotion` type with a fill reaction for the variables `trophic.guild` and `thermoregulation`.  
+```{r}
+library(shiny)
+ui <- fluidPage(titlePanel("Homerange Locomotion"),
+                radioButtons("x", "select Fill Varaible", choices = c("trophic.guild", "thermoregulation"), selected = "trophic.guild"), plotOutput("plot", width="600px", height= "500px"))
+server <- function(input, output, session){
+  output$plot <- renderPlot({
+    ggplot(homerange, aes_string(x="locomotion", fill=input$x))+
+      geom_bar(position="dodge", alpha=0.8, color="black")+
+    theme_light(base_size = 18)+
+    labs(x=NULL, y=NULL, fill="Fill Variable")})}
+```
 
 3. The app below adds some nicer aesthetics. It makes a density plot of log10.hra with taxon as a reactive variable. Edit the app to explore log10.hra by locomotion type.  
 ```{r, eval=F, echo=T}

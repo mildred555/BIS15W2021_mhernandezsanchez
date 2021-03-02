@@ -157,6 +157,9 @@ homerange %>%
   ggplot(aes(x=locomotion, fill=thermoregulation))+
   geom_bar(position = "dodge")
 ```
+```{r}
+names(homerange)
+```
 
 
 2. Build a shiny app that produces a barplot that explores `locomotion` type with a fill reaction for the variables `trophic.guild` and `thermoregulation`.  

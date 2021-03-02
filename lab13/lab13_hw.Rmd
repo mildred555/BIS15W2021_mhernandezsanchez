@@ -122,10 +122,10 @@ ui <- dashboardPage(
   box(
   selectInput("x", "Select Campus", choices = c("Davis", "Berkeley", "Irivine", "Los_Angeles", "Merced", "Riverside", "San_Diego", "Santa_Barbara", "Santa_Cruz"), selected = "Davis"),
   selectInput("y", "Select Ethnicity", choices = c("African American", "American Indian", "Asian", "Chicano/Latino", "International", "Unknown", "White", "All"), selected = "African American"),
-  selectInput("z", "Select Academic Year", choices = c("2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019"), selected = "2019"),
+  selectInput("z", "Category", choices = c("Applicants", "Enrollees", "Admits"), selected = "Applicants"),
   
   
-  sliderInput("pointsize", "Select the Point Size", min = 1, max = 5, value = 2, step = 0.5)
+  sliderInput("pointsize", "Select the Point Size", min = 1, max = 2, value = 2, step = 0.5)
   ),
   
   box(
@@ -136,14 +136,13 @@ ui <- dashboardPage(
 ) # close the ui
 
 server <- function(input, output, session) { 
-  output$UC_Admissions_Plot <- renderPlot({
+  output$UC_Enrollment_Plot <- renderPlot({
     UC_admit %>%
-      filter(category == "Enrollees") %>%
       filter(campus == input$x) %>%
       filter(ethnicity == input$y) %>%
-      filter(academic_yr == input$z) %>%
-  ggplot(aes_string(x = "category", y= "filtered_count_fr"))+
-    geom_col()+
+      filter(category== input$z) %>%
+  ggplot(aes(x = academic_yr, y= filtered_count_fr))+
+    geom_col(size=5, alpha=0.8)+
     theme_light(base_size = 18)
   })
   session$onSessionEnded(stopApp)

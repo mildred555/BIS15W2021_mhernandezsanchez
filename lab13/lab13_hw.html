@@ -328,10 +328,10 @@ shinyApp(ui, server)</code></pre>
   box(
   selectInput(&quot;x&quot;, &quot;Select Campus&quot;, choices = c(&quot;Davis&quot;, &quot;Berkeley&quot;, &quot;Irivine&quot;, &quot;Los_Angeles&quot;, &quot;Merced&quot;, &quot;Riverside&quot;, &quot;San_Diego&quot;, &quot;Santa_Barbara&quot;, &quot;Santa_Cruz&quot;), selected = &quot;Davis&quot;),
   selectInput(&quot;y&quot;, &quot;Select Ethnicity&quot;, choices = c(&quot;African American&quot;, &quot;American Indian&quot;, &quot;Asian&quot;, &quot;Chicano/Latino&quot;, &quot;International&quot;, &quot;Unknown&quot;, &quot;White&quot;, &quot;All&quot;), selected = &quot;African American&quot;),
-  selectInput(&quot;z&quot;, &quot;Select Academic Year&quot;, choices = c(&quot;2010&quot;, &quot;2011&quot;, &quot;2012&quot;, &quot;2013&quot;, &quot;2014&quot;, &quot;2015&quot;, &quot;2016&quot;, &quot;2017&quot;, &quot;2018&quot;, &quot;2019&quot;), selected = &quot;2019&quot;),
+  selectInput(&quot;z&quot;, &quot;Category&quot;, choices = c(&quot;Applicants&quot;, &quot;Enrollees&quot;, &quot;Admits&quot;), selected = &quot;Applicants&quot;),
   
   
-  sliderInput(&quot;pointsize&quot;, &quot;Select the Point Size&quot;, min = 1, max = 5, value = 2, step = 0.5)
+  sliderInput(&quot;pointsize&quot;, &quot;Select the Point Size&quot;, min = 1, max = 2, value = 2, step = 0.5)
   ),
   
   box(
@@ -342,14 +342,13 @@ shinyApp(ui, server)</code></pre>
 ) # close the ui
 
 server &lt;- function(input, output, session) { 
-  output$UC_Admissions_Plot &lt;- renderPlot({
+  output$UC_Enrollment_Plot &lt;- renderPlot({
     UC_admit %&gt;%
-      filter(category == &quot;Enrollees&quot;) %&gt;%
       filter(campus == input$x) %&gt;%
       filter(ethnicity == input$y) %&gt;%
-      filter(academic_yr == input$z) %&gt;%
-  ggplot(aes_string(x = &quot;category&quot;, y= &quot;filtered_count_fr&quot;))+
-    geom_col()+
+      filter(category== input$z) %&gt;%
+  ggplot(aes(x = academic_yr, y= filtered_count_fr))+
+    geom_col(size=5, alpha=0.8)+
     theme_light(base_size = 18)
   })
   session$onSessionEnded(stopApp)

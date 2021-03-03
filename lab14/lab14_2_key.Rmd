@@ -70,6 +70,7 @@ Individual parts of the above plot may be obtained as follows.
 #?plotMissing
 plotMissing(sug, main="")
 plotMissing(sug, main="", reorder=1)
+#drop.nullmarkers(sug)
 #?plotMap
 plotMap(sug)
 plotMap(sug,show.marker.names=TRUE)
@@ -86,7 +87,7 @@ iplotMap(sug) #D7MIT31
 ```
 Let’s use iplotCorr to plot a heat map of the correlation matrix for the phenotype of all pairs, linked to scatterplots of the phenotypes.
 ```{r}
-iplotCorr(sug$pheno)
+iplotCorr(sug$pheno) #plot correlation between phenotypes
 iplotCorr(sug$pheno, chartOpts=list(height=300, width=600, scatcolors="pink"))
 ```
 The interactive graphs produced by R/qtlcharts are, by default, saved to a temporary file and then opened in the default web browser. If you want to save a chart to a particular file, assign the result to some object and use the function `saveWidget()` in the [htmlwidgets package] (http://www.htmlwidgets.org/), as follows:
@@ -104,14 +105,15 @@ LOD score is actually an acronym for "log of the odds," LOD. LOD score actually 
 ### Single-QTL analysis
 We first calculate the QTL genotype probabilities, given the observed marker data, via the function calc.genoprob. This is done at the markers and at a grid along the chromosomes. The argument step is the density of the grid (in cM), and defines the density of later QTL analyses. To perform a single-QTL genome scan, we use the function scanone. By default, it considers the first phenotype in the input cross object (in this case, blood pressure).
 ```{r}
-sug <- calc.genoprob(sug, step=1)
+sug <- calc.genoprob(sug, step=1) #1centimorgan is being used 
 out.em <- scanone(sug)
 out.em2 <- scanone(sug, pheno.col=1:4)
 ```
 The output has “class” "scanone". The summary function is passed to the function summary.scanone, and gives the maximum LOD score on each chromosome.
 ```{r}
 summary(out.em)
-summary(out.em2)
+summary(out.em2) #shows you the highest values for pos and lod for a marker
+#c7.loc45 hihgly related to 6.109 of BP 
 ```
 Alternatively, we can give a threshold, e.g., to only see those chromosomes with LOD > 3.
 ```{r}
@@ -131,11 +133,11 @@ iplotScanone(out.em)
 ```
 You can use the chr to plot only selected chromosomes.
 ```{r}
-iplotScanone(out.em, chr=c(7,15))
+iplotScanone(out.em, chr=c(7,15)) #only showing chromo 7 and15
 ```
 
 ```{r}
-iplotScanone(out.em, sug)
+iplotScanone(out.em, sug) #good to show how the genotype is associated with the phenotype so for HR, BB is strongly associated with HR
 ```
 
 ```{r}

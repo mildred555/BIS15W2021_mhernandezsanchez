@@ -33,6 +33,10 @@ The data for this assignment come from the [University of California Information
 ```{r}
 UC_admit <- readr::read_csv("data/UC_admit.csv")
 ```
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 **1. Use the function(s) of your choice to get an idea of the overall structure of the data frame, including its dimensions, column names, variable classes, etc. As part of this, determine if there are NA's and how they are treated.**  
 
@@ -42,6 +46,7 @@ UC_admit <- readr::read_csv("data/UC_admit.csv")
 
 **3. Make alternate version of your app above by tracking enrollment at a campus over all of the represented years while allowing users to interact with campus, category, and ethnicity.**
 
+</div>
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences. 

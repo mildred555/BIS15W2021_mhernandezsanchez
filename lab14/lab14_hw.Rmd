@@ -37,7 +37,7 @@ for (i in 1:length(us_individual_collar_files)){
     ggplot(us_individual_plots, aes(x=long,y=lat))+
       geom_path()+
       geom_point()+
-      labs(title = us_individual_collar_files[i], x = "longitude", y = "latitude")
+      labs(title = "Collar Data", x = "Longitude", y = "Latitude")
   )
 }
 ```
@@ -74,7 +74,7 @@ for (i in 1:length(us_individual_collar_files)){
     ggmap(map)+
       geom_path(data = us_individual_plots, aes(long,lat))+
       geom_point(data = us_individual_plots, aes(long,lat))+
-      labs(title = us_individual_collar_files[i], x = "longitude", y = "latitude")
+      labs(title = "Collar Data", x = "Longitude", y = "Latitude")
   )
 }
 ```
